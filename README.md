@@ -1,4 +1,4 @@
-# Angular2 Using Polymer Element
+# Angular2 Heroes Example
 
 ## Overview
 
