@@ -72,20 +72,24 @@ import {HeroService} from "../commons/hero.service";
   `]
 })
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
     private title = 'Tour of Heroes';
     private heroes:Hero[];
     private selectedHero:Hero;
 
-    constructor(private _heroesService:HeroService){
+    constructor(private _heroService:HeroService) {
     }
 
     ngOnInit():any {
         this.getHeroes();
     }
 
-    getHeroes(){
-        this.heroes = this._heroesService.getHeroes();
+    getHeroes() {
+        this._heroService.getHeroes().then(heroes => this.heroes = heroes);
+
+        //this._heroService.getHeroes().then(function(heroes){
+        //    return this.heroes = heroes;
+        //});
     }
 
     onSelect(hero:Hero) {
