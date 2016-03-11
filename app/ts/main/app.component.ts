@@ -1,10 +1,13 @@
 import {Component} from 'angular2/core';
+import {OnInit} from 'angular2/core';
 import {Hero} from '../commons/hero';
 import {HeroDetailComponent} from '../hero-detail/hero-detail.component'
+import {HeroService} from "../commons/hero.service";
 
 @Component({
     selector: 'heroes-app',
     directives: [HeroDetailComponent],
+    providers: [HeroService],
     template: `
     <h1>{{title}}</h1>
     <h2>My Heroes</h2>
@@ -69,10 +72,21 @@ import {HeroDetailComponent} from '../hero-detail/hero-detail.component'
   `]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
     private title = 'Tour of Heroes';
     private heroes:Hero[];
     private selectedHero:Hero;
+
+    constructor(private _heroesService:HeroService){
+    }
+
+    ngOnInit():any {
+        this.getHeroes();
+    }
+
+    getHeroes(){
+        this.heroes = this._heroesService.getHeroes();
+    }
 
     onSelect(hero:Hero) {
         this.selectedHero = hero;
