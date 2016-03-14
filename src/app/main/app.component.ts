@@ -18,7 +18,7 @@ import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
       </nav>
       <router-outlet></router-outlet>
   `,
-  styleUrls: ['app/ts/main/app.component.css']
+  styleUrls: ['src/app/main/app.component.css']
 })
 
 @RouteConfig([

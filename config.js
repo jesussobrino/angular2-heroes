@@ -1,12 +1,14 @@
 // Configure SystemJS
 System.config({
     packages: {
-        app: {
-            format: 'register',
-            defaultExtension: 'js'
+        src: {
+            app: {
+                format: 'register',
+                defaultExtension: 'js'
+            }
         }
     }
 });
 
-System.import('app/ts/main')
+System.import('src/app/main')
         .then(null, console.error.bind(console));

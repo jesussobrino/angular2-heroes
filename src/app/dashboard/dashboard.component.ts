@@ -6,8 +6,8 @@ import {HeroService} from '../commons/hero.service';
 @Component(
   {
     selector: 'dashboard',
-    templateUrl: 'app/ts/dashboard/dashboard.component.html',
-    styleUrls: ['app/ts/dashboard/dashboard.component.css']
+    templateUrl: 'src/app/dashboard/dashboard.component.html',
+    styleUrls: ['src/app/dashboard/dashboard.component.css']
   }
 )
 
@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit{
   }
 
   heroDetail(hero){
-    let link = ['HeroDetail', {id: hero.id}]
+    let link = ['HeroDetail', {id: hero.id}];
     this._router.navigate(link);
   }
 }
