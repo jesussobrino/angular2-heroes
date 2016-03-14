@@ -12,10 +12,13 @@ import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
     providers: [ROUTER_PROVIDERS, HeroService],
     template: `
       <h1>{{title}}</h1>
-      <a [routerLink]="['Heroes']">Heroes</a>
-      <a [routerLink]="['Dashboard']">Dashboard</a>
+      <nav>
+        <a [routerLink]="['Heroes']">Heroes</a>
+        <a [routerLink]="['Dashboard']">Dashboard</a>
+      </nav>
       <router-outlet></router-outlet>
-  `
+  `,
+  styleUrls: ['app/ts/main/app.component.css']
 })
 
 @RouteConfig([

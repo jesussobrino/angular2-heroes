@@ -6,7 +6,8 @@ import {HeroService} from '../commons/hero.service';
 @Component(
   {
     selector: 'dashboard',
-    templateUrl: 'app/ts/dashboard/dashboard.component.html'
+    templateUrl: 'app/ts/dashboard/dashboard.component.html',
+    styleUrls: ['app/ts/dashboard/dashboard.component.css']
   }
 )
 
