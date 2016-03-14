@@ -3,6 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 import {HeroService} from '../commons/hero.service';
 import {HeroesComponent} from '../heroes/heroes.component';
 import {DashboardComponent} from '../dashboard/dashboard.component';
+import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
 
 
 @Component({
@@ -24,10 +25,15 @@ import {DashboardComponent} from '../dashboard/dashboard.component';
     component: HeroesComponent
   },
   {
-    path: 'dashboard',
+    path: '/dashboard',
     name: 'Dashboard',
     component: DashboardComponent,
     useAsDefault: true
+  },
+  {
+    path: '/detail/:id',
+    name: 'HeroDetail',
+    component: HeroDetailComponent
   }
 ])
 
