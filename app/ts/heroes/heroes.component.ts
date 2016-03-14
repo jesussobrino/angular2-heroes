@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {OnInit} from 'angular2/core';
+import {Router} from 'angular2/router';
 import {Hero} from '../commons/hero';
 import {HeroDetailComponent} from '../hero-detail/hero-detail.component'
 import {HeroService} from "../commons/hero.service";
@@ -17,7 +18,12 @@ import {HeroService} from "../commons/hero.service";
       </li>
     </ul>
 
-    <hero-detail [hero]="selectedHero"></hero-detail>
+    <div *ngIf="selectedHero">
+      <h2>
+        {{selectedHero.name | uppercase}} is my hero
+      </h2>
+      <button (click)="heroDetail(selectedHero)">View Details</button>
+    </div>
     `,
     styles: [`
     .selected {
@@ -75,7 +81,7 @@ export class HeroesComponent implements OnInit {
     private heroes:Hero[];
     private selectedHero:Hero;
 
-    constructor(private _heroService:HeroService) {
+    constructor(private _heroService:HeroService, private _route:Router) {
     }
 
     ngOnInit():any {
@@ -88,6 +94,10 @@ export class HeroesComponent implements OnInit {
         //this._heroService.getHeroes().then(function(heroes){
         //    return this.heroes = heroes;
         //});
+    }
+
+    heroDetail(hero){
+      this._route.navigate(['HeroDetail', {id: hero.id}])
     }
 
     onSelect(hero:Hero) {
