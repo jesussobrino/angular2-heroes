@@ -1,6 +1,7 @@
-/*/ts/*/*.js
+/*/app/*/*.js
 /node_modules
 /typings
 .idea
 *.js.map
+/npm-debug.log
 main.js
