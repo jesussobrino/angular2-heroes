@@ -1,7 +1,11 @@
-/*/app/*/*.js
+/src/*/*.js
+/src/*/*/*.js
+/src/*.js
 /node_modules
 /typings
 .idea
 *.js.map
 /npm-debug.log
 main.js
+/dist
+

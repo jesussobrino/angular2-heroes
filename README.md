@@ -23,6 +23,7 @@ We’ll learn enough core Angular to get started and gain confidence that Angula
 The application needs some dependencies, such as Bower, Angular files, etc.  You can install these by running:
 
 ```
+npm install --global typescript typings webpack nodemon
 npm install
 ```
 
