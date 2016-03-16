@@ -7,8 +7,7 @@ import {expressEngine, REQUEST_URL, NODE_LOCATION_PROVIDERS} from 'angular2-univ
 import {provide, enableProdMode} from 'angular2/core';
 import {APP_BASE_HREF, ROUTER_PROVIDERS} from 'angular2/router';
 // Application
-import {App} from './server/app';
-// import {Title, ServerOnlyApp} from './server/server-only-app';
+import {AppComponent} from "./app/main/app.component";
 
 let app = express();
 let root = path.join(path.resolve(__dirname, '..'));
@@ -22,18 +21,18 @@ app.set('view engine', 'html');
 
 
 function ngApp(req, res) {
-  let baseUrl = '/';
-  let url = req.originalUrl || '/';
-  res.render('index', {
-    directives: [App/*, Title, ServerOnlyApp*/],
-    providers: [
-      provide(APP_BASE_HREF, {useValue: baseUrl}),
-      provide(REQUEST_URL, {useValue: url}),
-      ROUTER_PROVIDERS,
-      NODE_LOCATION_PROVIDERS,
-    ],
-    preboot: true
-  });
+    let baseUrl = '/';
+    let url = req.originalUrl || '/';
+    res.render('index', {
+        directives: [AppComponent],
+        providers: [
+            provide(APP_BASE_HREF, {useValue: baseUrl}),
+            provide(REQUEST_URL, {useValue: url}),
+            ROUTER_PROVIDERS,
+            NODE_LOCATION_PROVIDERS
+        ],
+        preboot: true
+    });
 }
 
 // Serve static files
@@ -41,10 +40,11 @@ app.use(express.static(root));
 
 // Routes
 app.use('/', ngApp);
-app.use('/about', ngApp);
-app.use('/home', ngApp);
+app.use('/heroes', ngApp);
+app.use('/dashboard', ngApp);
+app.use('/detail/:id', ngApp);
 
 // Server
 app.listen(3000, () => {
-  console.log('Listen on http://localhost:3000');
+    console.log('Server: Listen on http://localhost:3000');
 });
