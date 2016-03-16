@@ -1,14 +1,31 @@
-# Angular2 Heroes Example
+# Angular2 Heroes (Server-Side Rendering)
 
 ## Overview
 
-Our grand plan is to build an app to help a staffing agency manage its stable of heroes. Even heroes need to find work.
+As you can see this repo is following [The Angular 2 Heroes tutorial][angular2-tutorial] with my ideal folder structure. I don't know if it's the best folder structure, but I like it the most. Specially because I'm using server-side rendering with Angular 2. 
+ 
+This repo is divided in several branches, each branch represent a step of the Angular 2 Heroes tutorial:
 
-Of course we'll only make a little progress in this tutorial. What we do build will have many of the features we expect to find in a full-blown, data-driven application: acquiring and displaying a list of heroes, editing a selected hero's detail, and navigating among different views of heroic data.
+- [step0][git-step0] - Angular docs: [Configuration & "Hello World"][angular-step0].
+- [step1][git-step1] - Angular docs: [The Hero Editor][angular-step1].
+- [step2][git-step2] - Angular docs: [Hero list and details][angular-step2].
+- [step3][git-step3] - Angular docs: [Refactoring components][angular-step3].
+- [step4][git-step4] - Angular docs: [Services][angular-step4].
+- [step5][git-step5] - Angular docs: [Routing][angular-step5].
+- [step6][git-step6] - Angular docs: [Server-Side Rendering][angular-step6].
 
-The Tour of Heroes covers the core fundamentals of Angular. We’ll use built-in directives to show/hide elements and display lists of hero data. We’ll create a component to display hero details and another to show an array of heroes. We'll use one-way data binding for read-only data. We'll add editable fields to update a model with two-way data binding. We'll bind component methods to user events like key strokes and clicks. We’ll learn to select a hero from a master list and edit that hero in the details view. We'll format data with pipes. We'll create a shared service to assemble our heroes. And we'll use routing to navigate among different views and their components.
+I would recommend:
+ 
+- To Start with step0: `git clone https://github.com/jesussobrino/angular2-heroes.git && cd angular2-heroes && git checkout step0 ` 
+- Or to follow step by step the [Angular 2 tutorial][angular2-tutorial].
 
-We’ll learn enough core Angular to get started and gain confidence that Angular can do whatever we need it to do. We'll be covering a lot of ground at an introductory level but we’ll find plenty of links to chapters with greater depth.
+## Server-Side Rendering
+
+As you can see the [step6 branch][git-step6] is using server-side rendering. Unfortunately I didn't know how to apply server-side rendering with [lite-server][lite-server-issue]. So I decided to change the package dependencies for using webpack, because I think it's easier to understand.
+
+In this example, you can take a look to the "Network tab" in the Chrome Dev Tools, and see how fast is loaded the initial template in comparison with previous steps.
+ 
+For more Sever-Side Rendering information, please take a look to [Angular Universal][angular-step6].
 
 ## Prerequisites
 
@@ -41,3 +58,19 @@ npm start
 
 [node-download-url]: https://nodejs.org/en/download/
 [localhost-url]: http://localhost:3000/
+[lite-server-issue]: https://github.com/johnpapa/lite-server/issues/50
+[angular2-tutorial]: https://angular.io/docs/ts/latest/tutorial/
+[git-step0]: https://github.com/jesussobrino/angular2-heroes/tree/step0
+[git-step1]: https://github.com/jesussobrino/angular2-heroes/tree/step1
+[git-step2]: https://github.com/jesussobrino/angular2-heroes/tree/step2
+[git-step3]: https://github.com/jesussobrino/angular2-heroes/tree/step3
+[git-step4]: https://github.com/jesussobrino/angular2-heroes/tree/step4
+[git-step5]: https://github.com/jesussobrino/angular2-heroes/tree/step5
+[git-step6]: https://github.com/jesussobrino/angular2-heroes/tree/step6
+[angular-step0]: https://angular.io/docs/ts/latest/quickstart.html
+[angular-step1]: https://angular.io/docs/ts/latest/tutorial/toh-pt1.html
+[angular-step2]: https://angular.io/docs/ts/latest/tutorial/toh-pt2.html
+[angular-step3]: https://angular.io/docs/ts/latest/tutorial/toh-pt3.html
+[angular-step4]: https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
+[angular-step5]: https://angular.io/docs/ts/latest/tutorial/toh-pt5.html
+[angular-step6]: https://github.com/angular/universal
