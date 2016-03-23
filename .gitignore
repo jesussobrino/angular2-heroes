@@ -1,6 +1,6 @@
-/*/ts/*/*.js
 /node_modules
 /typings
 .idea
 *.js.map
-main.js
+/app/*/*.js
+/app/ts/*/*.js
