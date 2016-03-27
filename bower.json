@@ -1,0 +1,26 @@
+{
+  "name": "angular2-heroes",
+  "version": "3.0.0",
+  "description": "Angular 2 Heroes Web-workers example",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jesussobrino/angular2-heroes.git"
+  },
+  "description": "Angular 2 web-workers example",
+  "authors": [
+    "Jesús Sobrino <jesusyyo@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular2"
+  ],
+  "moduleType": [
+    "es6",
+    "globals"
+  ],
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "moment": "^2.12.0"
+  }
+}

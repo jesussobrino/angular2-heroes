@@ -15,31 +15,32 @@ import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
       <nav>
         <a [routerLink]="['Heroes']">Heroes</a>
         <a [routerLink]="['Dashboard']">Dashboard</a>
+        <a href="app/ts/web-workers/web-workers.html" class="link">Web Workers</a>
       </nav>
       <router-outlet></router-outlet>
   `,
-  styleUrls: ['app/ts/main/app.component.css']
+    styleUrls: ['app/ts/main/app.component.css']
 })
 
 @RouteConfig([
-  {
-    path: '/heroes',
-    name: 'Heroes',
-    component: HeroesComponent
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: DashboardComponent,
-    useAsDefault: true
-  },
-  {
-    path: '/detail/:id',
-    name: 'HeroDetail',
-    component: HeroDetailComponent
-  }
+    {
+        path: '/heroes',
+        name: 'Heroes',
+        component: HeroesComponent
+    },
+    {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: DashboardComponent,
+        useAsDefault: true
+    },
+    {
+        path: '/detail/:id',
+        name: 'HeroDetail',
+        component: HeroDetailComponent
+    }
 ])
 
 export class AppComponent {
     private title = 'Tour of Heroes';
-  }
+}

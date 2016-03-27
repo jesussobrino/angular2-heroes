@@ -15,7 +15,7 @@
     "postinstall": "typings install",
     "prestart": "npm install"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "angular2": "^2.0.0-beta.12",
     "systemjs": "0.19.22",
@@ -25,6 +25,7 @@
     "zone.js": "0.6.6"
   },
   "devDependencies": {
+    "traceur": "^0.0.91",
     "concurrently": "^2.0.0",
     "lite-server": "^2.1.0",
     "typescript": "^1.8.2",

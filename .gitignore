@@ -1,6 +1,8 @@
+/bower_components
 /node_modules
 /typings
 .idea
 *.js.map
 /app/*/*.js
 /app/ts/*/*.js
+/app/ts/*/*/*.js
