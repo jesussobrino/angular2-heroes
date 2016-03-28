@@ -1,9 +1,12 @@
 <div *ngIf="hero">
-  <h2>{{hero.name}} {{'DETAIL' | i18nSelect: esLanguage}}!</h2>
-  <div><label> {{'ID' | i18nSelect: esLanguage}}: </label>{{hero.id}}</div>
-  <div>
-    <label>{{'NAME' | i18nSelect: esLanguage}}: </label>
-    <input [(ngModel)]="hero.name" placeholder="name"/>
-  </div>
-  <button (click)="goBack()">{{'BACK' | i18nSelect: esLanguage}}</button>
+    <h2>{{hero.name}} {{'DETAIL' | i18nSelect: esLanguage}}!</h2>
+    <div><label> {{'ID' | i18nSelect: esLanguage}}: </label>{{hero.id}}</div>
+    <div>
+        <label>{{'NAME' | i18nSelect: esLanguage}}: </label>
+        <input [(ngModel)]="hero.name" placeholder="name" [ngFormControl]="inputControl"/>
+        <ul>
+            <li *ngFor="#item of items | async">{{item}}</li>
+        </ul>
+    </div>
+    <button (click)="goBack()">{{'BACK' | i18nSelect: esLanguage}}</button>
 </div>
