@@ -14,6 +14,7 @@ This repo is divided in several branches, each branch represent a step of the An
 - [step5][git-step5] - Angular docs: [Routing][angular-step5].
 - [step6][git-step6] - Angular docs: [Server-Side Rendering][angular-step6] (Webpack).
 - [step7][git-step7] - Angular docs: [Web Workers][angular-step7].
+- [step8][git-step8] - Angular docs: [Rx.Observable][angular-step8] (Typing on input of "hero-details").
 
 I would recommend:
 
@@ -69,6 +70,7 @@ npm start
 [git-step5]: https://github.com/jesussobrino/angular2-heroes/tree/step5
 [git-step6]: https://github.com/jesussobrino/angular2-heroes/tree/step6
 [git-step7]: https://github.com/jesussobrino/angular2-heroes/tree/step7
+[git-step8]: https://github.com/jesussobrino/angular2-heroes/tree/step8
 [angular-step0]: https://angular.io/docs/ts/latest/quickstart.html
 [angular-step1]: https://angular.io/docs/ts/latest/tutorial/toh-pt1.html
 [angular-step2]: https://angular.io/docs/ts/latest/tutorial/toh-pt2.html
@@ -77,3 +79,4 @@ npm start
 [angular-step5]: https://angular.io/docs/ts/latest/tutorial/toh-pt5.html
 [angular-step6]: https://github.com/angular/universal
 [angular-step7]: https://github.com/angular/angular/blob/master/modules/angular2/docs/web_workers/web_workers.md
+[angular-step8]: http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html
