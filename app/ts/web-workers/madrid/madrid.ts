@@ -12,7 +12,7 @@ export class Madrid extends Clock{
     city = 'Madrid';
 
     constructor(){
-        super(1);
+        super(2);
     }
 }
 

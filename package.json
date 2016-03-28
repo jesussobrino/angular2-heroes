@@ -1,7 +1,7 @@
 {
   "name": "angular2-heroes",
   "version": "3.0.0",
-  "description": "Angular 2 Heroes",
+  "description": "Angular 2 Heroes with Web Workers Exmaple",
   "repository": {
     "type": "git",
     "url": "https://github.com/jesussobrino/angular2-heroes.git"
@@ -13,7 +13,7 @@
     "lite": "lite-server",
     "typings": "typings",
     "postinstall": "typings install",
-    "prestart": "npm install"
+    "prestart": "npm install && bower install"
   },
   "license": "MIT",
   "dependencies": {
@@ -25,7 +25,6 @@
     "zone.js": "0.6.6"
   },
   "devDependencies": {
-    "traceur": "^0.0.91",
     "concurrently": "^2.0.0",
     "lite-server": "^2.1.0",
     "typescript": "^1.8.2",
