@@ -14,7 +14,7 @@ This repo is divided in several branches, each branch represent a step of the An
 - [step5][git-step5] - Angular docs: [Routing][angular-step5].
 - [step6][git-step6] - Angular docs: [Server-Side Rendering][angular-step6] (Webpack).
 - [step7][git-step7] - Angular docs: [Web Workers][angular-step7].
-- [step8][git-step8] - Angular docs: [Rx.Observable][angular-step8] (Inside of "hero-details").
+- [step8][git-step8] - Angular docs: [Rx.Observable][angular-step8] (Typing on input of "hero-details").
 
 I would recommend:
 

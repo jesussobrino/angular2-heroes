@@ -1,6 +1,10 @@
 import {Injectable} from 'angular2/core';
 import {URLSearchParams, Jsonp} from 'angular2/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
 import {HEROES} from "./heroes.mock";
 
 @Injectable()
@@ -18,9 +22,15 @@ export class HeroService {
         )
     }
 
-    wikiSearch(searchParam:string) {
-        console.log('HeroService:wikiSearch ');
-        
+    wikiSearch(terms:Observable<string>, debounceTime = 350) {
+        return terms.debounceTime(debounceTime)
+                    .distinctUntilChanged()
+                    .switchMap(termData => this.rawSearch(termData.toString()));
+    }
+
+    rawSearch(searchParam:string) {
+        console.log('HeroService:wikiSearch ', searchParam);
+
         let search:URLSearchParams = new URLSearchParams();
         search.set('action', 'opensearch');
         search.set('search', searchParam);
