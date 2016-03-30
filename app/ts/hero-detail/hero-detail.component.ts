@@ -34,7 +34,7 @@ export class HeroDetailComponent implements OnInit {
         this.zipCodeControl.valueChanges
             .debounceTime(400)
             .distinctUntilChanged()
-            .switchMap(search => this._heroService.searchZipCode(search.toString()))
+            .flatMap(search => this._heroService.searchZipCode(search.toString()))
             .subscribe(result => this.geoResults = result);
     }
 

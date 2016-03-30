@@ -1,10 +1,7 @@
 import {Injectable} from 'angular2/core';
-import {URLSearchParams, Jsonp, Http} from 'angular2/http';
+import {URLSearchParams, Jsonp, Http, Response} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+import 'rxjs/Rx'; // Adding all operators to Observable
 import {HEROES} from "./heroes.mock";
 
 @Injectable()
@@ -48,6 +45,11 @@ export class HeroService {
         search.set('maxRows', '10');
 
         return this.http.get('http://api.geonames.org/postalCodeSearchJSON', {search})
-            .map(res => res.json().postalCodes);
+            .map(res => res.json().postalCodes)
+            .catch(this.handleError);
+    }
+
+    private handleError (error: Response) {
+        return Observable.throw(error.json().status.message || 'Server error');
     }
 }
