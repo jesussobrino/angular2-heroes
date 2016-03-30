@@ -14,10 +14,12 @@ import {es_ES} from '../../i18n/es-ES'
 })
 
 export class HeroDetailComponent implements OnInit {
-    hero:Hero = null;
+    hero:Hero;
     esLanguage:any = es_ES;
-    inputControl:Control = new Control();
-    items:Observable<Array<string>>;
+    nameControl:Control = new Control();
+    zipCodeControl:Control = new Control();
+    wikiResults:Observable<Array<string>>;
+    geoResults: any;
 
     constructor(private _heroService:HeroService, private _routeParams:RouteParams) {
     }
@@ -26,10 +28,14 @@ export class HeroDetailComponent implements OnInit {
         var id = parseInt(this._routeParams.get('id'));
         this._heroService.getHero(id)
             .then(hero => this.hero = hero);
-            // .then(() => this.inputControl.updateValue(this.hero.name)); //TODO Review this
+        // .then(() => this.inputControl.updateValue(this.hero.name)); //TODO Review this
 
-        this.items = this._heroService.wikiSearch(this.inputControl.valueChanges, 300);
-
+        this.wikiResults = this._heroService.wikiSearch(this.nameControl.valueChanges, 300);
+        this.zipCodeControl.valueChanges
+            .debounceTime(400)
+            .distinctUntilChanged()
+            .switchMap(search => this._heroService.searchZipCode(search.toString()))
+            .subscribe(result => this.geoResults = result);
     }
 
     goBack() {

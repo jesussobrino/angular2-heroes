@@ -4,14 +4,14 @@ import {HeroService} from '../commons/hero.service';
 import {HeroesComponent} from '../heroes/heroes.component';
 import {DashboardComponent} from '../dashboard/dashboard.component';
 import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
-import {JSONP_PROVIDERS} from 'angular2/http';
+import {JSONP_PROVIDERS, HTTP_PROVIDERS} from 'angular2/http';
 
 
 
 @Component({
     selector: 'heroes-app',
     directives: [ROUTER_DIRECTIVES],
-    providers: [ROUTER_PROVIDERS, HeroService, JSONP_PROVIDERS],
+    providers: [ROUTER_PROVIDERS, HeroService, JSONP_PROVIDERS, HTTP_PROVIDERS],
     template: `
       <h1>{{title}}</h1>
       <nav>

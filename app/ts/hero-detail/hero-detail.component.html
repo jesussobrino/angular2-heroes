@@ -1,11 +1,20 @@
 <div *ngIf="hero">
     <h2>{{hero.name}} {{'DETAIL' | i18nSelect: esLanguage}}!</h2>
-    <div><label> {{'ID' | i18nSelect: esLanguage}}: </label>{{hero.id}}</div>
+    <div>
+        <label> {{'ID' | i18nSelect: esLanguage}}: </label>{{hero.id}}
+    </div>
     <div>
         <label>{{'NAME' | i18nSelect: esLanguage}}: </label>
-        <input [(ngModel)]="hero.name" placeholder="name" [ngFormControl]="inputControl"/>
+        <input [(ngModel)]="hero.name" placeholder="name" [ngFormControl]="nameControl"/>
         <ul>
-            <li *ngFor="#item of items | async">{{item}}</li>
+            <li *ngFor="#wikiResult of wikiResults | async">{{wikiResult}}</li>
+        </ul>
+    </div>
+    <div>
+        <label>Zip Code: </label>
+        <input placeholder="Zip Code" [ngFormControl]="zipCodeControl"/>
+        <ul>
+            <li *ngFor="#geoResult of geoResults">{{geoResult.placeName}} - {{geoResult.adminName1}} - {{geoResult.countryCode}}</li>
         </ul>
     </div>
     <button (click)="goBack()">{{'BACK' | i18nSelect: esLanguage}}</button>
