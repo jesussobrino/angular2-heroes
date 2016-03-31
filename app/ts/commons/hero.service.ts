@@ -1,15 +1,12 @@
 import {Injectable} from 'angular2/core';
-import {URLSearchParams, Jsonp} from 'angular2/http';
+import {URLSearchParams, Jsonp, Http, Response} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+import 'rxjs/Rx'; // Adding all operators to Observable
 import {HEROES} from "./heroes.mock";
 
 @Injectable()
 export class HeroService {
-    constructor(private jsonp:Jsonp) {
+    constructor(private jsonp:Jsonp, private http:Http) {
     }
 
     getHeroes() {
@@ -36,8 +33,23 @@ export class HeroService {
         search.set('search', searchParam);
         search.set('format', 'json');
 
-        return this.jsonp
-            .get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', {search})
-            .map((request) => request.json()[1]);
+        return this.jsonp.get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', {search})
+            .map((res) => res.json()[1]);
+    }
+
+    searchZipCode(searchParam:string) {
+        let search:URLSearchParams = new URLSearchParams();
+
+        search.set('postalcode', searchParam);
+        search.set('username', 'jesussobrino');
+        search.set('maxRows', '10');
+
+        return this.http.get('http://api.geonames.org/postalCodeSearchJSON', {search})
+            .map(res => res.json().postalCodes)
+            .catch(this.handleError);
+    }
+
+    private handleError (error: Response) {
+        return Observable.throw(error.json().status.message || 'Server error');
     }
 }
