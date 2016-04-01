@@ -1,13 +1,14 @@
 import * as path from 'path';
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
 
-// Angular 2
 import 'angular2-universal-preview/polyfills';
-import {expressEngine, REQUEST_URL, NODE_LOCATION_PROVIDERS} from 'angular2-universal-preview';
+import {expressEngine, REQUEST_URL, NODE_ROUTER_PROVIDERS, NODE_HTTP_PROVIDERS} from 'angular2-universal-preview';
+
 import {provide, enableProdMode} from 'angular2/core';
-import {APP_BASE_HREF, ROUTER_PROVIDERS} from 'angular2/router';
-// Application
-import {AppComponent} from "./app/main/app.component";
+import {APP_BASE_HREF} from 'angular2/router';
+
+import {HtmlComponent} from './server-only-app/html.component';
 
 let app = express();
 let root = path.join(path.resolve(__dirname, '..'));
@@ -19,26 +20,37 @@ app.engine('.html', expressEngine);
 app.set('views', __dirname);
 app.set('view engine', 'html');
 
+app.use(bodyParser.json());
+
 
 function ngApp(req, res) {
     let baseUrl = '/';
     let url = req.originalUrl || '/';
     res.render('index', {
-        directives: [AppComponent],
+        directives: [HtmlComponent],
         providers: [
             provide(APP_BASE_HREF, {useValue: baseUrl}),
             provide(REQUEST_URL, {useValue: url}),
-            ROUTER_PROVIDERS,
-            NODE_LOCATION_PROVIDERS
+            NODE_ROUTER_PROVIDERS,
+            NODE_HTTP_PROVIDERS
         ],
-        preboot: true
+        async: true
     });
 }
 
 // Serve static files
-app.use(express.static(root));
+app.use(express.static(root, {index: false}));
 
-// Routes
+// Our API for demos only
+app.get('/data.json', (req, res) => {
+    res.json({
+        title: 'Tour of Heroes',
+        method: 'Server-side Rendering',
+        description: '(Server Info)'
+    });
+});
+
+// Routes with html5pushstate
 app.use('/', ngApp);
 app.use('/heroes', ngApp);
 app.use('/dashboard', ngApp);

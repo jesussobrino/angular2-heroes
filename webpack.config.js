@@ -9,7 +9,7 @@ var commonConfig = {
   module: {
     loaders: [
       // TypeScript
-      { test: /\.ts$/, loader: 'ts-loader', exclude: [ /node_modules/ ] }
+      { test: /\.ts$/, loader: 'ts-loader' }
     ]
   },
   plugins: [
@@ -23,6 +23,13 @@ var clientConfig = {
   entry: './src/client',
   output: {
     path: path.join(__dirname, 'dist', 'client')
+  },
+  node: {
+    global: true,
+    __dirname: true,
+    __filename: true,
+    process: true,
+    Buffer: false
   }
 };
 
@@ -64,7 +71,7 @@ var defaultConfig = {
 
 
 
-
+var webpackMerge = require('webpack-merge');
 module.exports = [
   // Client
   webpackMerge({}, defaultConfig, commonConfig, clientConfig),

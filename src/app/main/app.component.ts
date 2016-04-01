@@ -1,5 +1,6 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Http} from 'angular2/http';
 import {HeroService} from '../commons/hero.service';
 import {HeroesComponent} from '../heroes/heroes.component';
 import {DashboardComponent} from '../dashboard/dashboard.component';
@@ -12,7 +13,7 @@ import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
     directives: [...ROUTER_DIRECTIVES],
     providers: [HeroService],
     template: `
-      <h1>{{title}}</h1>
+      <h1>{{title}} {{description}}</h1>
       <nav>
         <a [routerLink]="['Heroes']">Heroes</a>
         <a [routerLink]="['Dashboard']">Dashboard</a>
@@ -76,6 +77,19 @@ import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
     }
 ])
 
-export class AppComponent {
-    private title = 'Tour of Heroes';
+export class AppComponent implements OnInit {
+    private title;
+    private description;
+
+    constructor(private _http:Http) {
+    }
+
+    ngOnInit() {
+        // we need to use full urls for the server to work
+        this._http.get('http://localhost:3000/data.json')
+            .subscribe(res => {
+                this.title = res.json().title;
+                this.description = res.json().description;
+            });
+    }
 }
