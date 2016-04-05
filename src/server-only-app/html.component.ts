@@ -40,7 +40,7 @@ import {HeroDetailComponent} from "../app/hero-detail/hero-detail.component";
               Loading...
             </footer-app>
         
-            <script async [attr.src]="seo.src"></script>
+            <script [attr.src]="seo.src"></script>
           </body>
   `
 })
