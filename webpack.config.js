@@ -1,4 +1,3 @@
-var webpackMerge = require('webpack-merge');
 var webpack = require('webpack');
 var path = require('path');
 
