@@ -1,0 +1,8 @@
+<div class="login-wrapper">
+    <div [hidden]="userAuthToken" id="{{googleLoginButtonId}}" >
+    </div>
+</div>
+<div [hidden]="!userAuthToken">
+    <p>Hello, {{userName}}!</p>
+    <button (click)="signOut()">Sign out</button>
+</div>

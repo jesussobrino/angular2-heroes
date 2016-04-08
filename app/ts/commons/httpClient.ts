@@ -33,7 +33,7 @@ export class HttpClient {
         let requestOptions = new RequestOptions();
         requestOptions.method = requestMethod;
         requestOptions.url = url;
-        requestOptions.headers = this.createHeaders();
+        // requestOptions.headers = this.createHeaders(); //TODO Create Headers when API is ready
         requestOptions.body = JSON.stringify(body);
         requestOptions.search = this.createSearchParams(options);
 
@@ -54,7 +54,7 @@ export class HttpClient {
         let headers:Headers = new Headers();
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', 'Bearer ' + this.getTokenFromCookie());
+        headers.append('Authorization', 'token OAUTH-TOKEN');
 
         return headers;
     }
@@ -65,19 +65,6 @@ export class HttpClient {
      */
     private createSearchParams(params:RequestOptionsArgs):URLSearchParams {
         return (params.search as URLSearchParams)
-    }
-
-    /**
-     * Get Bearer Token from Cookie (For this example)
-     * @returns {any}
-     */
-    private getTokenFromCookie():string {
-        var matches = document.cookie.match(/\BEARER-TOKEN=([^\s;]+)/);
-        try {
-            return (matches && decodeURIComponent(matches[1]));
-        } catch (error) {
-            return ("");
-        }
     }
 
     /**

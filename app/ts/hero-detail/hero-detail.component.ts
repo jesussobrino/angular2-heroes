@@ -19,7 +19,7 @@ export class HeroDetailComponent implements OnInit {
     nameControl:Control = new Control();
     zipCodeControl:Control = new Control();
     wikiResults:Observable<Array<string>>;
-    geoResults: any;
+    geoResults:any;
 
     constructor(private _heroService:HeroService, private _routeParams:RouteParams) {
     }
