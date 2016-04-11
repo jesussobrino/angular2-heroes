@@ -1,4 +1,4 @@
-import {Component, AfterViewInit, NgZone} from "angular2/core";
+import {Component, AfterViewInit, NgZone, OnInit} from "angular2/core";
 
 declare var gapi:any;
 
@@ -7,12 +7,16 @@ declare var gapi:any;
     templateUrl: 'app/ts/login/login.component.html'
 })
 
-export class LoginComponent implements AfterViewInit {
+export class LoginComponent implements AfterViewInit, OnInit {
     googleLoginButtonId = 'google-login-button';
     userAuthToken;
     userName;
 
     constructor(private _ngZone:NgZone) {
+    }
+
+    ngOnInit():any {
+        this.userAuthToken = localStorage.getItem('id_token')
     }
 
     ngAfterViewInit():any {
