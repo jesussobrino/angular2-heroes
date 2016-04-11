@@ -16,7 +16,8 @@ export class LoginComponent implements AfterViewInit, OnInit {
     }
 
     ngOnInit():any {
-        this.userAuthToken = localStorage.getItem('id_token')
+        this.userAuthToken = localStorage.getItem('id_token');
+        this.userName = localStorage.getItem('user_name');
     }
 
     ngAfterViewInit():any {
@@ -54,8 +55,11 @@ export class LoginComponent implements AfterViewInit, OnInit {
             this.userName = userName;
             if (authToken) {
                 localStorage.setItem('id_token', authToken);
+                localStorage.setItem('user_name', userName);
             } else {
                 localStorage.removeItem('id_token');
+                localStorage.removeItem('user_name');
+
             }
         });
     }
