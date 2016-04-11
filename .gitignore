@@ -1,11 +1,12 @@
-/src/*/*.js
-/src/*/*/*.js
 /src/*.js
+/src/app/*.js
+/src/app/*/*.js
+src/server-only-app/*.js
 /node_modules
 /typings
 .idea
 *.js.map
 /npm-debug.log
-main.js
+/bower_components
 /dist
 
