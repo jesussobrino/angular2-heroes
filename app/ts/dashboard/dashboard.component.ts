@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit} from 'angular2/core';
+import {Component, AfterViewInit} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {Hero} from '../commons/hero';
 import {HeroService} from '../commons/hero.service';
