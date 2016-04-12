@@ -15,6 +15,7 @@ This repo is divided in several branches, each branch represent a step of the An
 - [step6][git-step6] - Angular docs: [Server-Side Rendering][angular-step6] (Webpack).
 - [step7][git-step7] - Angular docs: [Web Workers][angular-step7].
 - [step8][git-step8] - Angular docs: [Rx.Observable][angular-step8] (Typing on input of "hero-details").
+- [step9][git-step9] - Angular docs: [Login Auth2][angular-step9].
 
 I would recommend:
 
@@ -71,6 +72,7 @@ npm start
 [git-step6]: https://github.com/jesussobrino/angular2-heroes/tree/step6
 [git-step7]: https://github.com/jesussobrino/angular2-heroes/tree/step7
 [git-step8]: https://github.com/jesussobrino/angular2-heroes/tree/step8
+[git-step9]: https://github.com/jesussobrino/angular2-heroes/tree/step9
 [angular-step0]: https://angular.io/docs/ts/latest/quickstart.html
 [angular-step1]: https://angular.io/docs/ts/latest/tutorial/toh-pt1.html
 [angular-step2]: https://angular.io/docs/ts/latest/tutorial/toh-pt2.html
@@ -79,4 +81,4 @@ npm start
 [angular-step5]: https://angular.io/docs/ts/latest/tutorial/toh-pt5.html
 [angular-step6]: https://github.com/angular/universal
 [angular-step7]: https://github.com/angular/angular/blob/master/modules/angular2/docs/web_workers/web_workers.md
-[angular-step8]: http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html
+[angular-step9]: https://developers.google.com/identity/sign-in/web/sign-in

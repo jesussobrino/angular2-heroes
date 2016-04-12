@@ -45,7 +45,16 @@ export class HeroService {
         urlSearchParams.set('username', 'jesussobrino');
         urlSearchParams.set('maxRows', '10');
 
-        return this.httpClient.get('http://api.geonames.org/postalCodeSearchJSON', {search: urlSearchParams})
-            .map(res => res.postalCodes);
+        return this.http.get('http://api.geonames.org/postalCodeSearchJSON', {search: urlSearchParams})
+            .map(res => res.json().postalCodes);
+    }
+
+    youtubeSearchList(searchParam:string) {
+        let urlSearchParams:URLSearchParams = new URLSearchParams();
+        urlSearchParams.set('q', searchParam);
+        urlSearchParams.set('part', 'id,snippet');
+
+        return this.httpClient.get('https://content.googleapis.com/youtube/v3/search', {search: urlSearchParams})
+            .map(res => res.items);
     }
 }

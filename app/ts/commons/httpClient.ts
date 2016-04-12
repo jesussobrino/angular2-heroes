@@ -33,7 +33,7 @@ export class HttpClient {
         let requestOptions = new RequestOptions();
         requestOptions.method = requestMethod;
         requestOptions.url = url;
-        // requestOptions.headers = this.createHeaders(); //TODO Create Headers when API is ready
+        requestOptions.headers = this.createHeaders();
         requestOptions.body = JSON.stringify(body);
         requestOptions.search = this.createSearchParams(options);
 
@@ -52,11 +52,29 @@ export class HttpClient {
      */
     private createHeaders():Headers {
         let headers:Headers = new Headers();
+        let accessToken = this.getToken();
+        if (!accessToken) {
+            return
+        }
+
         headers.append('Accept', 'application/json');
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', 'token OAUTH-TOKEN');
+        headers.append('Authorization', accessToken);
 
         return headers;
+    }
+
+    /**
+     *
+     * @returns {string}
+     */
+    private getToken():string {
+        let accessToken = localStorage.getItem('access_token');
+        if (accessToken && accessToken !== 'undefined') {
+            return 'Bearer ' + localStorage.getItem('access_token');
+        } else {
+            return null;
+        }
     }
 
     /**

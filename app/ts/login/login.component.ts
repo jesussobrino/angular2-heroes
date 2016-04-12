@@ -26,22 +26,22 @@ export class LoginComponent implements AfterViewInit, OnInit {
             this.googleLoginButtonId,
             {
                 'onSuccess': this.onSignIn,
-                'scope': 'profile'
+                'scope': 'https://www.googleapis.com/auth/youtube.readonly'
             }
         );
     }
 
     onSignIn = (googleUser) => {
-        var profile = googleUser.getBasicProfile();
-        this.updateUserData(googleUser.getAuthResponse().id_token, JSON.stringify(profile));
-        console.log('onSignIn - ID: ' + profile.getId());
+        var googleAuth = googleUser.getAuthResponse();
+        this.updateUserData(googleAuth.id_token, googleAuth.access_token, JSON.stringify(googleUser.getBasicProfile()));
+        console.log('onSignIn - Token: ' + googleAuth.token_type);
     };
 
     signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(() => {
             this.updateUserData();
-            console.log('User signed out.');
+            console.log('User signed out!');
         });
     }
 
@@ -50,7 +50,7 @@ export class LoginComponent implements AfterViewInit, OnInit {
      * @param authToken
      * @param profile
      */
-    updateUserData(authToken?, profile?) {
+    updateUserData(authToken?, accessToken?, profile?) {
         this._ngZone.run(() => {
             let profileParsed = profile ? JSON.parse(profile) : null;
             this.userAuthToken = authToken;
@@ -58,10 +58,11 @@ export class LoginComponent implements AfterViewInit, OnInit {
             if (authToken) {
                 localStorage.setItem('id_token', authToken);
                 localStorage.setItem('profile', profile);
+                localStorage.setItem('access_token', accessToken);
             } else {
                 localStorage.removeItem('id_token');
                 localStorage.removeItem('profile');
-
+                localStorage.removeItem('access_token');
             }
         });
     }

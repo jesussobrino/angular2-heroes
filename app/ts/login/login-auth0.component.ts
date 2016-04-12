@@ -15,20 +15,21 @@ export class LoginAuth0Component {
     }
 
     login() {
-        this.lock.show((err:string, profile:string, id_token:string) => {
+        this.lock.show((err:string, profile:string, id_token:string, access_token:string) => {
             if (err) {
                 throw new Error(err);
             }
 
             localStorage.setItem('profile', JSON.stringify(profile));
             localStorage.setItem('id_token', id_token);
-
+            localStorage.setItem('access_token', access_token);
         });
     }
 
     logout() {
         localStorage.removeItem('profile');
         localStorage.removeItem('id_token');
+        localStorage.removeItem('access_token');
     }
 
     loggedIn (){

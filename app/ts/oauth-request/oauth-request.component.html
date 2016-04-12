@@ -1,0 +1,7 @@
+<h1>Youtube Search results</h1>
+<label>Youtube Search: </label>
+<input placeholder="Enter artist here" [ngFormControl]="youtubeControl"/>
+<ul>
+    <li *ngFor="#youtubeResult of youtubeResults">{{youtubeResult.snippet.title}}
+    </li>
+</ul>

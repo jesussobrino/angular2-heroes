@@ -10,6 +10,7 @@ import {HttpErrorHandler} from "../commons/httpErrorHandler";
 import {LoginComponent} from "../login/login.component";
 import {AuthHttp, AuthConfig, tokenNotExpired} from "angular2-jwt";
 import {LoginAuth0Component} from "../login/login-auth0.component";
+import {OauthRequestComponent} from "../oauth-request/oauth-request.component";
 
 
 @Component({
@@ -29,6 +30,7 @@ import {LoginAuth0Component} from "../login/login-auth0.component";
         <a [routerLink]="['LoginAuth']">Login Auth0</a>
         <a [routerLink]="['Heroes']">Heroes</a>
         <a [routerLink]="['Dashboard']">Dashboard</a>
+        <a *ngIf="loggedIn()" [routerLink]="['Request']">Oauth Request</a>
         <a *ngIf="loggedIn()" href="app/ts/web-workers/web-workers.html" class="link">Web Workers</a>
       </nav>
       <router-outlet></router-outlet>
@@ -57,6 +59,11 @@ import {LoginAuth0Component} from "../login/login-auth0.component";
         name: 'Dashboard',
         component: DashboardComponent,
         useAsDefault: true
+    },
+    {
+        path: '/request',
+        name: 'Request',
+        component: OauthRequestComponent
     },
     {
         path: '/detail/:id',
