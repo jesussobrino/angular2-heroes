@@ -16,8 +16,9 @@ export class LoginComponent implements AfterViewInit, OnInit {
     }
 
     ngOnInit():any {
+        let profile = localStorage.getItem('profile') ? JSON.parse(localStorage.getItem('profile')) : null;
         this.userAuthToken = localStorage.getItem('id_token');
-        this.userName = localStorage.getItem('user_name');
+        this.userName = profile ? (profile.name ? profile.name : profile.wc) : "";
     }
 
     ngAfterViewInit():any {
@@ -32,7 +33,7 @@ export class LoginComponent implements AfterViewInit, OnInit {
 
     onSignIn = (googleUser) => {
         var profile = googleUser.getBasicProfile();
-        this.updateUserData(googleUser.getAuthResponse().id_token, profile.getName());
+        this.updateUserData(googleUser.getAuthResponse().id_token, JSON.stringify(profile));
         console.log('onSignIn - ID: ' + profile.getId());
     };
 
@@ -47,18 +48,19 @@ export class LoginComponent implements AfterViewInit, OnInit {
     /**
      *
      * @param authToken
-     * @param userName
+     * @param profile
      */
-    updateUserData(authToken?, userName?) {
+    updateUserData(authToken?, profile?) {
         this._ngZone.run(() => {
+            let profileParsed = profile ? JSON.parse(profile) : null;
             this.userAuthToken = authToken;
-            this.userName = userName;
+            this.userName = profileParsed ? (profileParsed.name ? profileParsed.name : profileParsed.wc) : "";
             if (authToken) {
                 localStorage.setItem('id_token', authToken);
-                localStorage.setItem('user_name', userName);
+                localStorage.setItem('profile', profile);
             } else {
                 localStorage.removeItem('id_token');
-                localStorage.removeItem('user_name');
+                localStorage.removeItem('profile');
 
             }
         });
